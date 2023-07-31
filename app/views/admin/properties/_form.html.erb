@@ -49,47 +49,46 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card card-plain">
-      <div class="card-header card-header-primary">
+      <div class="  ">
         <h4 class="card-title mt-0">Property</h4>
       </div>
       <div class="card-body">
         <%= form_for([:admin, @property]) do |form| %>
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Name</label>
-           <%= form.text_field :name, class: "form-control",id: "exampleInput1"%>
+           <%= form.text_field :name,required: true, class: "form-control",id: "exampleInput1"%>
 
           </div>
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> amenities</label>
-           <%= form.text_field :amenities, class: "form-control",id: "exampleInput1" %>
+           <%= form.text_field :amenities, required: true, class: "form-control",id: "exampleInput1" %>
           </div>
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> size</label>
-           <%= form.text_field :size, class: "form-control",id: "exampleInput1" %>
+           <%= form.text_field :size,required: true, class: "form-control",id: "exampleInput1" %>
           </div>
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Price</label>
-           <%= form.text_field :price, class: "form-control",id: "exampleInput1" %>
+           <%= form.text_field :price, required: true, class: "form-control",id: "exampleInput1" %>
           </div>
 
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Bedrooms</label>
-           <%= form.number_field :bedrooms, class: "form-control",id: "exampleInput1" %>
+           <%= form.number_field :bedrooms, required: true, class: "form-control",id: "exampleInput1" %>
           </div>
 
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Bathrooms</label>
-           <%= form.number_field :bathrooms, class: "form-control",id: "exampleInput1" %>
+           <%= form.number_field :bathrooms,required: true, class: "form-control",id: "exampleInput1" %>
           </div>
-
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating">Parking</label>
-           <%= form.number_field :parking, class: "form-control",id: "exampleInput1" %>
+           <%= form.number_field :parking, required: true, class: "form-control",id: "exampleInput1" %>
           </div>
 
           <div class="form-group">
@@ -104,7 +103,8 @@
 
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Description</label>
-           <%= form.text_field :description, class: "form-control",id: "exampleInput1" %>
+           <%= form.text_area :description, required: true, class: " ckeditor form-control",id: "exampleInput1" %>
+           
           </div>
 
           <div class="form-group">
@@ -114,7 +114,7 @@
           
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Location</label>
-           <%= form.text_field :location, class: "form-control",id: "exampleInput1" %>
+           <%= form.text_field :location, required: true, class: "form-control",id: "exampleInput1" %>
           </div>      
           <div>
             <%= form.label :imgage %><br>
@@ -131,3 +131,4 @@
     </div>
   </div>
 </div>
+

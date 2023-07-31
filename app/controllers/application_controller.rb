@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-	before_action :authenticate_user!
 	# protect_from_forgery with: :exception
+  # before_action :chack_profile
   before_action :user_admin, expect:[:after_sign_in_path_for]
   include ApplicationHelper
   layout :set_layout
@@ -16,10 +16,17 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  def chack_profile    
+  end
   def authentication_admin!
     unless current_user.is_admin?
       flash[:alert] = "You are not authorized to perform this action."
       redirect_to(request.referrer || root_path)
     end
+  end
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :email,:password_confirmation,:password])
   end
 end

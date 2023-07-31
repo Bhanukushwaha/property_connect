@@ -1,11 +1,9 @@
 class PropertiesController < ApplicationController
+  # before_action :authenticate_user!, :except => [:show]
   before_action :set_property, only: %i[ show edit update destroy ]
 
   # GET /properties or /properties.json
   def index
-
-def index    
-  end
     @properties = Property.all
   end
 
@@ -61,13 +59,13 @@ def index
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_property
-      @property = Property.friendly.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_property
+    @property = Property.friendly.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def property_params
-      params.fetch(:property, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def property_params
+    params.fetch(:property, {})
+  end
 end

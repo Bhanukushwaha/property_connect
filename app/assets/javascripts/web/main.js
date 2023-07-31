@@ -350,12 +350,12 @@ $searchPriceRange.slider({
     max: 100000,
     values: [ 12500, 75000 ],
     slide: function( event, ui ) {
-        $searchPriceRange.find('.ui-slider-handle:eq(0)').html( '<span>' + '$' + ui.values[ 0 ] + '</span>');
-        $searchPriceRange.find('.ui-slider-handle:eq(1)').html( '<span>' + '$' + ui.values[ 1 ] + '</span>');
+        $searchPriceRange.find('.ui-slider-handle:eq(0)').html( '<span>' + '₹' + ui.values[ 0 ] + '</span>');
+        $searchPriceRange.find('.ui-slider-handle:eq(1)').html( '<span>' + '₹' + ui.values[ 1 ] + '</span>');
     }
 });
-$searchPriceRange.find('.ui-slider-handle:eq(0)').html( '<span>' + '$' + $searchPriceRange.slider( "values", 0 ) + '</span>' );
-$searchPriceRange.find('.ui-slider-handle:eq(1)').html( '<span>' + '$' + $searchPriceRange.slider( "values", 1 ) + '</span>' );   
+$searchPriceRange.find('.ui-slider-handle:eq(0)').html( '<span>' + '₹' + $searchPriceRange.slider( "values", 0 ) + '</span>' );
+$searchPriceRange.find('.ui-slider-handle:eq(1)').html( '<span>' + '₹' + $searchPriceRange.slider( "values", 1 ) + '</span>' );   
 
 /*--
     Dropzone Upload

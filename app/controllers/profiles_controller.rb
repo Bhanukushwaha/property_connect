@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
+	# before_action :authenticate_user!
 	before_action :set_profile, only: %i[ show edit update destroy ]
-	def index		
-	end
+	# def index
+	# end
 
 	def new
 		@profile = Profile.new
@@ -33,12 +34,11 @@ class ProfilesController < ApplicationController
     end
   end
 
-  
   private
   def set_profile
   	@profile = Profile.find(params[:id])
   end
   def profile_params
-  	params.require(:profile).permit(:name, :email, :user_id)
+  	params.require(:profile).permit(:name, :address, :mobile_number, :image)
   end
 end

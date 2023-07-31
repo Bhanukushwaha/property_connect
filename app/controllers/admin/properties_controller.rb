@@ -27,13 +27,9 @@ class Admin::PropertiesController < ApplicationController
 
 	def update
 		status_type = params[:property][:status_type].to_i
-		debugger
-		# update = property_params.merge()
+			# update = property_params.merge()
     if @property.update(property_params.merge(status_type: status_type))
-    	if params[:property][:images].compact_blank.present?
-    		@property.update(images: params[:property][:images])
-    		# @property.images.attached(params[:property][:images])
-    	end
+    	
       redirect_to  admin_property_path(@property)
     else
       render :edit, status: :unprocessable_entity

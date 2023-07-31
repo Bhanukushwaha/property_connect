@@ -3,6 +3,6 @@ class Addproperty < ActiveRecord::Migration[7.0]
     add_column :properties, :property_type, :string
     add_column :properties, :bedrooms, :integer
     add_column :properties, :bathrooms, :integer
-    add_column :properties, :parkingng, :integer
+    add_column :properties, :parking, :integer
   end
 end

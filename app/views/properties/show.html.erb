@@ -29,8 +29,12 @@
                 </div>
                 <div class="right">
                   <div class="type-wrap">
-                    <span class="price">&#8377;<%= @property.price %><span>Month</span></span>
-                    <span class="type">For Rent</span>
+                    <% if @property.status_type == "For Rent" %>
+                      <span class="price">&#8377;<%= @property.price %><span>Month</span></span>                    
+                       <span class="type">For Rent</span>
+                     <% else %>
+                      <span class="type">For Sale</span>
+                    <% end %>                    
                   </div>
                 </div>
               </div>
@@ -43,29 +47,28 @@
               </div>
               <div class="content">
                 <h3>Description</h3>
-                <p>Khonike - Real Estate Bootstrap 5 Templateipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lore magna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut quipx ea codo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolo.</p>
-                <p>Khonike - Real Estate Bootstrap 5 Templateis the Best should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore gna iqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacm emod tempor nt ut labore lore magna iqua. Ut enim ad minim veniamco laboris nisi ut aliqu.</p>
-                <p>Khonike - Real Estate Bootstrap 5 Templateis the Best should be the consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore lore gna iqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                <%= @property.location %>                
                 <div class="row mt-30 mb-30">
                   <div class="col-md-5 col-12 mb-xs-30">
                     <h3>Condition</h3>
                     <ul class="feature-list">
                       <li>
-                        <div class="image"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt=""></div>
-                        Area 550 sqft
+                        <div class="image"><img src="<%= asset_path('web/area.png')%>" alt=""></div>
+                        Area <%= @property.size %>
                       </li>
                       <li>
-                        <div class="image"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt=""></div>
-                        Bedroom 6
+                        <div class="image"><img src="<%= asset_path('web/bed.png')%>" alt=""></div>
+                        Bedroom <%= @property.bedrooms %>
                       </li>
                       <li>
-                        <div class="image"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bath.png" alt=""></div>
-                        Bathroom 4
+                        <div class="image"><img src="<%= asset_path('web/bath.png')%>" alt=""></div>
+                        Bathroom <%= @property.bathrooms %>
                       </li>
                       <li>
-                        <div class="image"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt=""></div>
-                        Garage 2
+                        <div class="image"><img src="<%= asset_path('web/parking.png')%>" alt=""></div>
+                        Garage <%= @property.parking %>
                       </li>
+                      
                       <li>
                         <div class="image"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/kitchen.png" alt=""></div>
                         Kitchen 2
@@ -95,12 +98,12 @@
                       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8CbvItGX7Vk"></iframe>
                     </div>
                   </div>
-                  <div class="col-12">
+                  <!-- <div class="col-12">
                     <h3>Location</h3>
                     <div class="embed-responsive ratio ratio-16x9">
                       <div id="single-property-map" class="embed-responsive-item google-map" data-lat="40.740178" data-Long="-74.190194"></div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -176,9 +179,9 @@
       <div class="col-lg-4 col-12 order-2 order-lg-1 pr-30 pr-sm-15 pr-xs-15">
         <!--Sidebar start-->
         <div class="sidebar">
-          <h4 class="sidebar-title"><span class="text">Search Property</span><span class="shape"></span></h4>
-          <!--Property Search start-->
-          <div class="property-search sidebar-property-search">
+           <!-- <h4 class="sidebar-title"><span class="text">Search Property</span><span class="shape"></span></h4>  -->
+          <!-- <!Property Search start -->
+          <!-- <div class="property-search sidebar-property-search">
             <form action="#">
               <div>
                 <input type="text" placeholder="Location">
@@ -255,7 +258,7 @@
                 <button>search</button>
               </div>
             </form>
-          </div>
+          </div> -->
           <!--Property Search end-->
         </div>
         <!--Sidebar end-->
@@ -267,34 +270,34 @@
             <div class="sidebar-property">
               <div class="image">
                 <span class="type">For Rent</span>
-                <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-1.jpg" alt=""></a>
+                <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-1.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="single-properties.html">Friuli-Venezia Giulia</a></h5>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">568 E 1st Ave, Miami</span>
-                <span class="price">$550 <span>Month</span></span>
+                <h5 class="title"><a href="#">Friuli-Venezia Giulia</a></h5>
+                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
+                <span class="price">&#8377;550 <span>Month</span></span>
               </div>
             </div>
             <div class="sidebar-property">
               <div class="image">
                 <span class="type">For Sale</span>
-                <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-2.jpg" alt=""></a>
+                <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-2.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="single-properties.html">Marvel de Villa</a></h5>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">450 E 1st Ave, New Jersey</span>
-                <span class="price">$2550</span>
+                <h5 class="title"><a href="#">Marvel de Villa</a></h5>
+                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
+                <span class="price">&#8377;2550</span>
               </div>
             </div>
             <div class="sidebar-property">
               <div class="image">
                 <span class="type">For Rent</span>
-                <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-3.jpg" alt=""></a>
+                <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-3.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="single-properties.html">Ruposi Bangla Cottage</a></h5>
+                <h5 class="title"><a href="#">Ruposi Bangla Cottage</a></h5>
                 <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">215 L AH Rod, California</span>
-                <span class="price">$550 <span>Month</span></span>
+                <span class="price">&#8377;550 <span>Month</span></span>
               </div>
             </div>
           </div>
@@ -307,10 +310,10 @@
           <div class="sidebar-agent-list">
             <div class="sidebar-agent">
               <div class="image">
-                <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-1.jpg" alt=""></a>
+                <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-1.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="single-properties.html">Donald Palmer</a></h5>
+                <h5 class="title"><a href="#">Donald Palmer</a></h5>
                 <a href="#" class="phone">(756) 447 5779</a>
                 <span class="properties">5 Properties</span>
                 <div class="social">
@@ -323,10 +326,10 @@
             </div>
             <div class="sidebar-agent">
               <div class="image">
-                <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-2.jpg" alt=""></a>
+                <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-2.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="single-properties.html">Sean Hamilton</a></h5>
+                <h5 class="title"><a href="#">Sean Hamilton</a></h5>
                 <a href="#" class="phone">(756) 447 5779</a>
                 <span class="properties">5 Properties</span>
                 <div class="social">
@@ -338,10 +341,10 @@
             </div>
             <div class="sidebar-agent">
               <div class="image">
-                <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-3.jpg" alt=""></a>
+                <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-3.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="single-properties.html">Christine Gilbert</a></h5>
+                <h5 class="title"><a href="#">Christine Gilbert</a></h5>
                 <a href="#" class="phone">(756) 447 5779</a>
                 <span class="properties">5 Properties</span>
                 <div class="social">
@@ -370,8 +373,8 @@
             <a href="#">Properties</a>
             <a href="#">Location</a>
             <a href="#">Price</a>
-          </div>
-          <!--Sidebar Tags end-->
+          </div>          
+          <!--Sidebar Tags end-->          
         </div>
       </div>
     </div>

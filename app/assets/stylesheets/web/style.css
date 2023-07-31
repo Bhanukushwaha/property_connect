@@ -347,7 +347,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     - Page Banner
 ------------------------------------------*/
 .page-banner-section {
-  background-image: url(../images/bg/download-bg.jpg);
+  background-image: url(/assets/web/download-bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

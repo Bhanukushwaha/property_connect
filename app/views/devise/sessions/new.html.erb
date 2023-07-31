@@ -1,26 +1,47 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="page-banner-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">Login or Register</h1>
+        <ul class="page-breadcrumb">
+          <li><a href="index.html">Home</a></li>
+          <li class="active">Login or Register</li>
+        </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
+<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-12 ms-auto me-auto">
+        <ul class="login-register-tab-list nav">
+          <li><a class="active">Login</a></li>
+          <li>or</li>
+          <li><a  href="/users/sign_up">Register</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane show active">
+            <!-- <form action="#"> -->
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="row">
+                <div class="col-12 mb-30"><%= f.email_field :email, autofocus: true, autocomplete: "email",required: true,  placeholder: "Email" %></div>
+                <div class="col-12 mb-30">
+                  <%= f.password_field :password,required: true, autocomplete: "new-password", placeholder: "Password" %></div>
+                <% if devise_mapping.rememberable? %>
+                  <div class="col-12 mb-30">
+                    <ul>
+                      <li><%= f.check_box :remember_me %> <label for="login_remember">Remember me</label></li>
+                    </ul>
+                  </div>
+                <% end %>
+                <div class="col-12"><%= f.submit "Log in", class: "btn" %></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= render "devise/shared/links" %>

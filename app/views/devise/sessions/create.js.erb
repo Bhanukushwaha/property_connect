@@ -1,0 +1,9 @@
+<% if @error.present? %>
+	<% if @error[:email] %>
+		document.getElementById("password_in_error").innerHTML = "<%= @error[:message] %>"
+	<% else %>
+		document.getElementById("sign_in_error").innerHTML = "<%= @error[:message] %>"
+	<% end %>
+<% else %>
+	window.location.href = "/"
+<% end %>

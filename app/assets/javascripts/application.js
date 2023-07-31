@@ -5,3 +5,4 @@
 //= require web/modernizr.min
 //= require web/plugins
 //= require web/popper.min
+//= require ckeditor-jquery

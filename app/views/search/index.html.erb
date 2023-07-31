@@ -1,0 +1,68 @@
+<div class="property-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-60 pb-lg-40 pb-md-30 pb-sm-20 pb-xs-10">
+  <div class="container">
+    <!--Section Title start-->
+    <div class="row">
+      <div class="col-md-12 mb-60 mb-xs-30">
+        <div class="section-title center">
+          <h1>Search Properties</h1>
+        </div>
+      </div>
+    </div>
+    <!--Section Title end-->
+    <div class="row">
+      <!--Property start-->
+      <% @properties.each do |property| %>
+        <div class="property-item col-lg-4 col-md-6 col-12 mb-40">
+          <div class="property-inner">
+            <div class="image">
+              <% if property.images.attached? %>
+                <%= link_to property_path(property) do %>
+                  <%= image_tag property.images.last %>
+                <% end %>
+                <!-- <a href="/properties/<%#= property.id%>"><%#= image_tag property.images.last %></a> -->
+              <% else %>
+                <%= link_to property_path(property) do %>
+                  <img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-1.jpg" alt="">
+                <% end %>
+              <% end %>
+              <ul class="property-feature">
+                <li>
+                  <span class="area"><img src="<%= asset_path('web/area.png')%>" alt=""><%= property.size %> SqFt</span>
+                </li>
+                <li>
+                  <span class="bed"><img src="<%= asset_path('web/bed.png')%>" alt="">6</span>
+                </li>
+                <li>
+                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
+                </li>
+                <li>
+                  <span class="parking"><img src="<%= asset_path('web/parking.png')%>" alt="">3</span>
+                </li>
+              </ul>
+            </div>
+            <div class="content">
+              <div class="left">
+                <h3 class="title">
+                  <%= link_to property.name, property_path(property) %>
+                </h3>
+                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= property.location %></span>
+              </div>
+              <div class="right">
+                <div class="type-wrap">
+                  <span class="price">&#8377;<%= property.price %></span>
+                  <% if property.status_type == "For Rent" %>
+                    <span class="type">For Rent</span>
+                  <% else %>
+                    <span class="type">For Sale</span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <!--Property end-->     
+      <!--Property end-->
+    </div>
+  </div>
+</div>

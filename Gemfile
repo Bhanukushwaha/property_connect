@@ -74,3 +74,4 @@ gem 'devise'
 gem "jquery-rails"
 gem "bootstrap"
 gem 'friendly_id'
+gem 'ckeditor_rails'
