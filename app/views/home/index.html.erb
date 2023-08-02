@@ -5,9 +5,8 @@
       <div class="row">
         <div class="col-12">
           <!--Hero Content start-->
-          <div class="hero-content">
-            <h3>WANT TO BUY OR RENT HOME ?</h3>
-            <h1><span>Khonike</span> Solve Your Problems</h1>
+          <div class="hero-content">            
+            <h1>Find YOUR DREAM PROPERTIES IN THE CITY OF DESTINY</h1>
           </div>
           <!--Hero Content end-->
         </div>
@@ -421,218 +420,45 @@
       <!--Property Slider start-->
       <div class="property-carousel section slider-space-30">
         <!--Property start-->
-        <div class="property-item col">
-          <div class="property-inner">
-            <div class="image">
-              <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-1.jpg" alt=""></a>
-              <ul class="property-feature">
-                <li>
-                  <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt="">550 SqFt</span>
-                </li>
-                <li>
-                  <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt="">6</span>
-                </li>
-                <li>
-                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
-                </li>
-                <li>
-                  <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt="">3</span>
-                </li>
-              </ul>
-            </div>
-            <div class="content">
-              <div class="left">
-                <h3 class="title"><a href="single-properties.html">Friuli-Venezia Giulia</a></h3>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">568 E 1st Ave, Miami</span>
+        <% @properties.each do |property| %>
+          <div class="property-item col">
+            <div class="property-inner">
+              <div class="image">
+                <% if property.images.attached? %>                
+                      <%= image_tag property.images.last %>                   
+                  <% else %>                
+                    <img src="/assets/web/property-1.jpg" alt="">                
+                  <% end %>                
+                <ul class="property-feature">
+                  <li>
+                    <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt=""><%= property.size %> SqFt</span>
+                  </li>
+                  <li>
+                    <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt=""><%= property.bedrooms %></span>
+                  </li>
+                  <li>
+                    <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt=""><%= property.bathrooms %></span>
+                  </li>
+                  <li>
+                    <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt=""><%= property.parking %></span>
+                  </li>
+                </ul>
               </div>
-              <div class="right">
-                <div class="type-wrap">
-                  <span class="price">$550<span>M</span></span>
-                  <span class="type">For Rent</span>
+              <div class="content">
+                <div class="left">
+                  <h3 class="title"><a href="single-properties.html"><%= property.name %></a></h3>
+                  <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= property.location %></span>
+                </div>
+                <div class="right">
+                  <div class="type-wrap">
+                    <span class="price">&#8377;<%= property.price %></span>                     
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!--Property end-->
-        <!--Property start-->
-        <div class="property-item col">
-          <div class="property-inner">
-            <div class="image">
-              <span class="label">Feature</span>
-              <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-2.jpg" alt=""></a>
-              <ul class="property-feature">
-                <li>
-                  <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt="">550 SqFt</span>
-                </li>
-                <li>
-                  <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt="">6</span>
-                </li>
-                <li>
-                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
-                </li>
-                <li>
-                  <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt="">3</span>
-                </li>
-              </ul>
-            </div>
-            <div class="content">
-              <div class="left">
-                <h3 class="title"><a href="single-properties.html">Marvel de Villa</a></h3>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">450 E 1st Ave, New Jersey</span>
-              </div>
-              <div class="right">
-                <div class="type-wrap">
-                  <span class="price">$2550</span>
-                  <span class="type">For Sale</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Property end-->
-        <!--Property start-->
-        <div class="property-item col">
-          <div class="property-inner">
-            <div class="image">
-              <span class="label">popular</span>
-              <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-3.jpg" alt=""></a>
-              <ul class="property-feature">
-                <li>
-                  <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt="">550 SqFt</span>
-                </li>
-                <li>
-                  <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt="">6</span>
-                </li>
-                <li>
-                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
-                </li>
-                <li>
-                  <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt="">3</span>
-                </li>
-              </ul>
-            </div>
-            <div class="content">
-              <div class="left">
-                <h3 class="title"><a href="single-properties.html">Ruposi Bangla Cottage</a></h3>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">215 L AH Rod, California</span>
-              </div>
-              <div class="right">
-                <div class="type-wrap">
-                  <span class="price">$550<span>M</span></span>
-                  <span class="type">For Rent</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Property end-->
-        <!--Property start-->
-        <div class="property-item col">
-          <div class="property-inner">
-            <div class="image">
-              <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-4.jpg" alt=""></a>
-              <ul class="property-feature">
-                <li>
-                  <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt="">550 SqFt</span>
-                </li>
-                <li>
-                  <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt="">6</span>
-                </li>
-                <li>
-                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
-                </li>
-                <li>
-                  <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt="">3</span>
-                </li>
-              </ul>
-            </div>
-            <div class="content">
-              <div class="left">
-                <h3 class="title"><a href="single-properties.html">MayaKanon de Villa</a></h3>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">12 EA 1st Ave, Washington</span>
-              </div>
-              <div class="right">
-                <div class="type-wrap">
-                  <span class="price">$550<span>M</span></span>
-                  <span class="type">For Rent</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Property end-->
-        <!--Property start-->
-        <div class="property-item col">
-          <div class="property-inner">
-            <div class="image">
-              <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-5.jpg" alt=""></a>
-              <ul class="property-feature">
-                <li>
-                  <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt="">550 SqFt</span>
-                </li>
-                <li>
-                  <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt="">6</span>
-                </li>
-                <li>
-                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
-                </li>
-                <li>
-                  <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt="">3</span>
-                </li>
-              </ul>
-            </div>
-            <div class="content">
-              <div class="left">
-                <h3 class="title"><a href="single-properties.html">Azorex de South Villa</a></h3>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">668 L 2nd Ave, Boston</span>
-              </div>
-              <div class="right">
-                <div class="type-wrap">
-                  <span class="price">$2550</span>
-                  <span class="type">For Sale</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Property end-->
-        <!--Property start-->
-        <div class="property-item col">
-          <div class="property-inner">
-            <div class="image">
-              <span class="label">Feature</span>
-              <a href="single-properties.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/property-6.jpg" alt=""></a>
-              <ul class="property-feature">
-                <li>
-                  <span class="area"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/area.png" alt="">550 SqFt</span>
-                </li>
-                <li>
-                  <span class="bed"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/bed.png" alt="">6</span>
-                </li>
-                <li>
-                  <span class="bath"><img src="<%= asset_path('web/bath.png')%>" alt="">4</span>
-                </li>
-                <li>
-                  <span class="parking"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/parking.png" alt="">3</span>
-                </li>
-              </ul>
-            </div>
-            <div class="content">
-              <div class="left">
-                <h3 class="title"><a href="single-properties.html">Radison de Villa</a></h3>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">12 1st Ave, New Yourk</span>
-              </div>
-              <div class="right">
-                <div class="type-wrap">
-                  <span class="price">$550<span>M</span></span>
-                  <span class="type">For Rent</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Property end-->
+        <% end %>
+        <!--Property end-->        
       </div>
       <!--Property Slider end-->
     </div>
@@ -673,110 +499,35 @@
     <div class="row">
       <div class="agent-carousel section slider-space-30">
         <!--Agent satrt-->
-        <div class="col">
-          <div class="agent">
-            <div class="image">
-              <a class="img" href="agent-details.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-1.jpg" alt=""></a>
-              <div class="social">
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+        <% @users.each do |user| %>
+          <div class="col">
+            <div class="agent">
+              <div class="image">
+                <a class="img" href="/agent/<%= user.id%>">
+                  <% if user.profile&.image&.attached? %>
+                      <%= image_tag user.profile.image, style: "width: 270px; height: 270px; " %>
+                  <% else %>
+                    <img src="/assets/web/agent-1.jpg" alt="">
+                  <% end %>
+                  <!-- <img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-1.jpg" alt=""> -->
+                </a>
+                <div class="social">
+                  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                  <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div>
+              </div>
+              <div class="content">
+                <h4 class="title"><a href="agent-details.html"><%= user&.profile&.name %></a></h4>
+                <a href="#" class="phone"><%= user&.profile&.mobile_number %></a>
+                <a href="#" class="email"><%= user.email %></a>
+                <span class="properties"><%= user.properties.count %> Properties</span>
               </div>
             </div>
-            <div class="content">
-              <h4 class="title"><a href="agent-details.html">Donald Palmer</a></h4>
-              <a href="#" class="phone">(756) 447 5779</a>
-              <a href="#" class="email">info@example.com</a>
-              <span class="properties">5 Properties</span>
-            </div>
           </div>
-        </div>
-        <!--Agent end-->
-        <!--Agent satrt-->
-        <div class="col">
-          <div class="agent">
-            <div class="image">
-              <a class="img" href="agent-details.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-2.jpg" alt=""></a>
-              <div class="social">
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-              </div>
-            </div>
-            <div class="content">
-              <h4 class="title"><a href="agent-details.html">Sean Hamilton</a></h4>
-              <a href="#" class="phone">(756) 447 5779</a>
-              <a href="#" class="email">info@example.com</a>
-              <span class="properties">2 Properties</span>
-            </div>
-          </div>
-        </div>
-        <!--Agent end-->
-        <!--Agent satrt-->
-        <div class="col">
-          <div class="agent">
-            <div class="image">
-              <a class="img" href="agent-details.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-3.jpg" alt=""></a>
-              <div class="social">
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-              </div>
-            </div>
-            <div class="content">
-              <h4 class="title"><a href="agent-details.html">Christine Gilbert</a></h4>
-              <a href="#" class="phone">(756) 447 5779</a>
-              <a href="#" class="email">info@example.com</a>
-              <span class="properties">4 Properties</span>
-            </div>
-          </div>
-        </div>
-        <!--Agent end-->
-        <!--Agent satrt-->
-        <div class="col">
-          <div class="agent">
-            <div class="image">
-              <a class="img" href="agent-details.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-4.jpg" alt=""></a>
-              <div class="social">
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-              </div>
-            </div>
-            <div class="content">
-              <h4 class="title"><a href="agent-details.html">Jason Patel</a></h4>
-              <a href="#" class="phone">(756) 447 5779</a>
-              <a href="#" class="email">info@example.com</a>
-              <span class="properties">2 Properties</span>
-            </div>
-          </div>
-        </div>
-        <!--Agent end-->
-        <!--Agent satrt-->
-        <div class="col">
-          <div class="agent">
-            <div class="image">
-              <a class="img" href="agent-details.html"><img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-5.jpg" alt=""></a>
-              <div class="social">
-                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-                <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-              </div>
-            </div>
-            <div class="content">
-              <h4 class="title"><a href="agent-details.html">Debra Myers</a></h4>
-              <a href="#" class="phone">(756) 447 5779</a>
-              <a href="#" class="email">info@example.com</a>
-              <span class="properties">3 Properties</span>
-            </div>
-          </div>
-        </div>
-        <!--Agent end-->
+        <% end %> 
+        <!--Agent end-->        
       </div>
     </div>
   </div>

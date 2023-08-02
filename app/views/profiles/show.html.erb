@@ -45,15 +45,15 @@
       <div class="col-lg-7 col-12">
         <div class="agent-content">
           <h3 class="title"><%= @profile.name %></h3>
-          <p><%= @profile.about %>Donald Palmer is a Specialist Real Estate Agent with 8 years of   Experience in Real Estate field. He achive success with his honesty,determination, hardwork and commetment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, totam?</p>
+          <p><%= @profile.about %></p>
           <div class="row">
             <div class="col-md-6 col-12 mb-30">
               <h4>Persoanl Info</h4>
               <ul>
-                <li><i class="pe-7s-map"></i><%= @profile.address %></li>
+                <li><i class="pe-7s-map-marker"></i><%= @profile.address %></li>
                 <li><i class="pe-7s-phone"></i><%= @profile.mobile_number %></li>
                 <% if current_user.role == "agent" %>   
-                  <li><i class="pe-7s-photo"></i>5 Properties</li>
+                  <li><i class="pe-7s-photo"></i><%= current_user.properties.count %> Properties</li>
                 <% end %>
               </ul>
               <!-- <div class="social">
@@ -63,16 +63,16 @@
                 <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
               </div> -->
             </div>
-            <div class="col-md-6 col-12 mb-30">
+            <!-- <div class="col-md-6 col-12 mb-30">
               <h4>Company Info</h4>
               <ul>
-              <% if current_user.role == "agent" %>            
+              <%# if current_user.role == "agent" %>            
                 <li><span>Company:</span> <span>GTA5</span></li>
                 <li><span>Number:</span> <span><a href="#">(756) 447 5744</a></span></li>
                 <li><span>Address:</span> <span>246,  Noth England</span></li>
-              <% end %>
+              <%# end %>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

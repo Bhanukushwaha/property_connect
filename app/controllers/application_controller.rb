@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	# protect_from_forgery with: :exception
-  # before_action :chack_profile
+  before_action :check_profile
   before_action :user_admin, expect:[:after_sign_in_path_for]
   include ApplicationHelper
   layout :set_layout
@@ -16,8 +16,14 @@ class ApplicationController < ActionController::Base
       end
     end
   end
-  def chack_profile    
+  def check_profile
+    if current_user.present? && current_user.role != "admin"
+      if !current_user.profile.present? && current_user&.profile&.is_complete == false
+        redirect_to(new_profile_path)
+      end
+    end
   end
+  
   def authentication_admin!
     unless current_user.is_admin?
       flash[:alert] = "You are not authorized to perform this action."
