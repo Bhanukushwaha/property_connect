@@ -9,13 +9,13 @@ class HomeController < ApplicationController
     #   end
     # end
     @users = User.agents.last(4)
-	@properties = Property.last(6)
-	# if params[:status_type].present?
-	# 	@properties = Property.where(status_type: params[:status_type])
-	# end
-	# if params[:status_type].present?
-	# 	@properties = Property.where(status_type: params[:status_type])
-	# end
+		@properties = Property.last(6)
+		# if params[:status_type].present?
+		# 	@properties = Property.where(status_type: params[:status_type])
+		# end
+		# if params[:status_type].present?
+		# 	@properties = Property.where(status_type: params[:status_type])
+		# end
 	end
 	def agent
 		@user = User.find(params[:id])

@@ -115,6 +115,10 @@
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Location</label>
            <%= form.text_field :location, required: true, class: "form-control",id: "exampleInput1" %>
+          </div>
+          <div class="form-group">
+           <label class="bmd-label-floating"> is_approved</label>
+           <%= form.check_box :is_approved, required: true %>
           </div>      
           <div>
             <%= form.label :imgage %><br>
@@ -123,8 +127,7 @@
             <% else %>
               <%= form.file_field :images, multiple: true %>
             <% end %>
-          </div>
-          
+          </div>          
          <%= form.submit class: "btn btn-primary" %>
         <% end %>
       </div>

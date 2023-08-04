@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :chack_profile
+  before_action :check_profile
   # before_action :authenticate_user!, :except => [:show]
   before_action :set_property, only: %i[ show edit update destroy ]
 
@@ -24,6 +24,7 @@ class PropertiesController < ApplicationController
   # POST /properties or /properties.json
   def create
     @property = Property.new(property_params)
+    @property.user_id = current_user.id
     respond_to do |format|
       if @property.save
         format.html { redirect_to property_url(@property), notice: "Property was successfully created." }
@@ -65,6 +66,6 @@ class PropertiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def property_params
-    params.fetch(:property, {})
+    params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking)
   end
 end

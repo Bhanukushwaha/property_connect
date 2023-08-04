@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   # get "profiles", to: "profiles#index"
   get "/search", to: "search#index"
   get "/agent/:id", to: "home#agent"
+  get "/new_password", to: "profiles#change_password"
+  get "/my_properties", to: "profiles#my_properties"
   get "/my_account", to: "profiles#my_account"
-  get "/my_new_properties", to: "profiles#my_new_properties"
+  post "/reset_password", to: "profiles#reset_password"
+  # get "/properties/new", to: "properties#new"
   resources :profiles
-  get "properties/:id", to: "properties#show", as: "property"
+  resources :properties
+  # get "properties/:id", to: "properties#show", as: "property"
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

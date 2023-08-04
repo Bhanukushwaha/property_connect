@@ -50,6 +50,6 @@ class Admin::PropertiesController < ApplicationController
 	 end
 
 	 def property_params		
-	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking)
+	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking, :is_approved)
 	 end
 end

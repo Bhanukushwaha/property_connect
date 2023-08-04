@@ -18,11 +18,11 @@
             <%= form_with model: @profile do |form| %>
               <div class="row">
                 <div class="col-12 mb-30">
-                  <%= form.text_field :name, autofocus: true, required: true,  placeholder: "Name" %>                  
+                  <%= form.text_field :name, autofocus: true, required: true,  placeholder: "Name" %>     
                 </div>
 
                 <div class="col-12 mb-30">
-                  <%= form.text_field :mobile_number, required: true, placeholder: "Mobile_number" %>                    
+                  <%= form.text_field :mobile_number, required: true, placeholder: "Mobile number" %>                    
                 </div>
 
                 <div class="col-12 mb-30">
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col-12 mb-30">
-                  <% if form.object.image.attached? %>
+                  <% if form.object&.image&.attached? %>
                    <%= form.file_field :image %>
                   <% else %>
                     <%= form.file_field :image , required: true %>

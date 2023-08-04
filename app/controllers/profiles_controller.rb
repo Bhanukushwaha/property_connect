@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
 	before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 	skip_before_action :check_profile
 	before_action :set_profile, only: %i[ show edit update destroy ]
 	# def index
@@ -15,14 +16,27 @@ class ProfilesController < ApplicationController
 	def edit
 	end
 
+	def reset_password
+		if current_user.valid_password?(params[:old_password])
+			if (params[:new_password] == params[:confirm_new_password])
+				@users = current_user.update(password: params[:new_password])
+			else
+				notice = "You have not mech confirm_new_password"
+			end
+		else
+			notice = "You have not mech password"
+		end
+	 end
+
+	def change_password
+	end
+
 	def my_account
 		if current_user.profile.present?
 			@profile = current_user.profile
 		else
 			@profile = Profile.new
 		end
-
-		@properties = current_user.properties
 	end
 
 	def create
@@ -43,6 +57,10 @@ class ProfilesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def my_properties
+  	@properties = current_user.properties
   end
 
   private

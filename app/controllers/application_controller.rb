@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
   def check_profile
     if current_user.present? && current_user.role != "admin"
-      if !current_user.profile.present? && current_user&.profile&.is_complete == false
+      if !current_user.profile.present? && !current_user&.profile&.is_complete
         redirect_to(new_profile_path)
       end
     end

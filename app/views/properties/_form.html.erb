@@ -1,17 +1,86 @@
-<%= form_with(model: property) do |form| %>
-  <% if property.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
-
-      <ul>
-        <% property.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<!--Page Banner Section start-->
+<div class="page-banner-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">My Account</h1>        
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
   </div>
-<% end %>
+</div>
+<!--Page Banner Section end-->
+<!--Login & Register Section start-->
+<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+  <div class="container">
+    <div class="row row-25">
+      <div class="col-lg-4 col-12 mb-sm-50 mb-xs-50">
+        <ul class="myaccount-tab-list nav">
+          <li><a href="/my_account"><i class="pe-7s-user"></i>My Profile</a></li>          
+          <li><a href="/my_properties"><i class="pe-7s-photo"></i>My Properties</a></li>
+          <li><a class="active" href="/properties/new"><i class="pe-7s-back fa-flip-horizontal"></i>Add New Property</a></li>
+          <li><a href="/new_password"><i class="pe-7s-lock"></i>Change Password</a></li>
+          <li><a href="/users/sign_out"><i class="pe-7s-power"></i>Log Out</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-8 col-12">
+        <div class="tab-content">
+          <div id="" class="tab-pane show active">
+            <%= form_with(model: @property) do |form| %>
+              <div class="row">
+                <div class="col-12 mb-30">
+                  <h3 class="mb-0">Properties New</h3>
+                </div>
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="f_name">Name</label>
+                    <%= form.text_field :name, autofocus: true, required: true,  placeholder: "Name" %>
+                  </div>
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="l_name">Amenities</label>                    
+                    <%= form.text_field :amenities, required: true, placeholder: "Amenities" %>
+                  </div>
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="size">Size</label>
+                    <%= form.text_field :size,required: true, placeholder: "Size" %>
+                  </div>
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="price">price</label>
+                    <%= form.text_field :price, required: true, placeholder: "price" %>
+                  </div>
+
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="bedrooms">Bedrooms</label>
+                    <%= form.number_field :bedrooms, required: true, placeholder: "Bedrooms" %>
+                  </div>
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="bathrooms">Bathrooms</label>                    
+                    <%= form.number_field :bathrooms, required: true, placeholder: "Bathrooms" %>
+                  </div>
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="parking">Parking</label>
+                    <%= form.number_field :parking, required: true, placeholder: "Parking"  %>
+                  </div>
+
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="location">location</label>
+                    <%= form.text_field :location, required: true, placeholder: "location" %>
+                  </div>
+
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="description">Description</label>
+                    <%= form.text_area :description, required: true, placeholder: "Description" %>
+                  </div>
+                  
+                  <div class="col-md-6 col-12 mb-30">
+                    <label for="l_name">Profile pic</label>
+                      <%= form.file_field :images, multiple: true %>
+                  </div>
+                <div class="col-12 mb-30"><%= form.submit "submit", class: "btn" %></div>        
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Login & Register Section end-->
