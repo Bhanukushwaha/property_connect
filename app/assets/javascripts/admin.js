@@ -8,3 +8,7 @@
 //= require admin/demo/demo
 //= require admin/index.umd
 //= require admin/buttons
+
+// setTimeout(function() {
+//     $('.FlashNotice').fadeOut('slow');
+// }, 3000);

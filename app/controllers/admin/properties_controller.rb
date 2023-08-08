@@ -26,10 +26,11 @@ class Admin::PropertiesController < ApplicationController
 	end
 
 	def update
-		status_type = params[:property][:status_type].to_i
-			# update = property_params.merge()
+		status_type = params[:property][:status_type].to_i			
     if @property.update(property_params.merge(status_type: status_type))
-    	
+    	if params[:property][:images].compact_blank.present?
+    		@property.update(images: params[:property][:images].compact_blank)
+    	end
       redirect_to  admin_property_path(@property)
     else
       render :edit, status: :unprocessable_entity
@@ -50,6 +51,6 @@ class Admin::PropertiesController < ApplicationController
 	 end
 
 	 def property_params		
-	 	params.require(:property).permit(:name,:description, :size, :price, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking, :is_approved)
+	 	params.require(:property).permit(:name,:description, :size, :price, :user_id, :amenities, :location, :property_type, :bedrooms, :bathrooms, :parking, :is_approved)
 	 end
 end

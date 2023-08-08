@@ -9,10 +9,14 @@ class ApplicationController < ActionController::Base
   end
   def user_admin
     if request.fullpath.split("/")[1] == "admin"
-      if current_user.role != 'admin'
-        redirect_to root_path
+      if current_user.present?
+        if current_user.role != 'admin'
+          redirect_to root_path
+        else
+          request.url
+        end
       else
-        request.url
+        redirect_to new_user_session_path
       end
     end
   end

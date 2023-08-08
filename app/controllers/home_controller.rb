@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     #   end
     # end
     @users = User.agents.last(4)
-		@properties = Property.last(6)
+		@properties = Property.where(is_approved: true).last(6)
 		# if params[:status_type].present?
 		# 	@properties = Property.where(status_type: params[:status_type])
 		# end

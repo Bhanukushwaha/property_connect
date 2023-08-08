@@ -44,6 +44,14 @@
     <div id="main-wrapper">
       <!--Header section start-->
       <%= render partial: "layouts/web/header"%>
+      <div class="FlashNotice">
+      <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %> fade in">
+        <a href="#" data-dismiss="alert" class="close"></a>
+        <%= value %>
+      </div>
+      <% end %>
+    </div>
       <!--Header section end-->
       <!--slider section start-->
       <%= yield %>

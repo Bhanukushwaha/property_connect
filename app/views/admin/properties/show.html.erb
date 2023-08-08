@@ -56,10 +56,15 @@
   </p>
 
   <p>
+    <strong>Is_approved:</strong>
+    <%= @property.is_approved %>
+  </p>
+
+  <p>
     <strong>Image:</strong>
     <% if @property.images.any? %>
     	<% @property.images.each do |img| %>
-		    <%= image_tag img, style: "width: 200px; height: 94px; " %>
+		    <%= image_tag img, style: "width: 200px; height: 100px; " %>
     	<% end %>
     <% end %>
   </p>
