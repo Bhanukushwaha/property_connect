@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # get "/properties/new", to: "properties#new"
   resources :profiles
   resources :properties
+  resources :posts
   # get "properties/:id", to: "properties#show", as: "property"
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

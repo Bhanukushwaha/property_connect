@@ -14,7 +14,11 @@ class PropertiesController < ApplicationController
 
   # GET /properties/new
   def new
-    @property = Property.new
+    if current_user.role == "agent"
+      @property = Property.new
+    else
+      redirect_to(request.referer)
+    end
   end
 
   # GET /properties/1/edit

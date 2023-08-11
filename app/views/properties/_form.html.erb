@@ -51,10 +51,10 @@
                     <label for="parking">Parking</label>
                     <%= form.number_field :parking, required: true, placeholder: "Parking"  %>
                   </div>
-
+                 
                   <div class="col-md-6 col-12 mb-30">
-                    <label for="location">location</label>
-                    <%= form.text_field :location, required: true, placeholder: "location" %>
+                   <label for="exampleInput1" class="bmd-label-floating"> Location</label>
+                   <%= form.select :location, [["Bairagarh", "Bairagarh"], ["Berasia Road", "Berasia Road"], ["Bittan Market", "Bittan Market"], ["Habib Gan", "Habib Gan"], ["Hamidia Road", "Hamidia Road"], ["Hari Ganga Nagar", "Hari Ganga Nagar"], ["Bangrasia", "Bangrasia"], ["Katara", "Katara"], ["Badwai", "Badwai"]],{:prompt => '--  Select Location --'}, class: "form-control", id: "exampleInput1" %>
                   </div>
 
                   <div class="col-md-6 col-12 mb-30">

@@ -1,6 +1,10 @@
 <div class="col-lg-4 col-12 mb-sm-50 mb-xs-50">
 	<ul class="myaccount-tab-list nav">
 	  <li><a class="<%= ((params[:controller] == "profiles") && (params[:action] == 'my_account')) ? 'active' : '' %>" href="/my_account"><i class="pe-7s-user"></i>My Profile</a></li>
+	  <% if current_user.role == "customer" %>
+		  <li><a class="<%= ((params[:controller] == "posts") && (params[:action] == 'new')) ? 'active' : '' %>" href="/posts/new"><i class="pe-7s-note"></i>Add New Post</a></li>
+		  <li><a class="<%= ((params[:controller] == "posts") && (params[:action] == 'index')) ? 'active' : '' %>" href="/posts"><i class="pe-7s-wallet"></i>Post List</a></li>
+	  <% end %>
     <% if current_user.role == "agent" %>
 		  <li><a class="<%= ((params[:controller] == "profiles") && (params[:action] == 'my_properties')) ? 'active' : '' %>" href="/my_properties"><i class="pe-7s-photo "></i>My Properties</a></li>
 		  <li><a class="<%= ((params[:controller] == "properties") && (params[:action] == 'new')) ? 'active' : '' %>" href="/properties/new"><i class="pe-7s-back fa-flip-horizontal"></i>Add New Property</a></li>

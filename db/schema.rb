@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_03_043721) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_045752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,6 +62,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_043721) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.string "city"
+    t.float "price"
+    t.text "address"
+    t.string "property_type"
+    t.string "transaction_type"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
@@ -86,7 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_03_043721) do
     t.string "slug"
     t.integer "status_type", default: 0
     t.string "property_type"
-    t.integer "bedrooms"w
+    t.integer "bedrooms"
     t.integer "bathrooms"
     t.integer "parking"
     t.boolean "is_approved", default: false

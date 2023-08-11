@@ -43,15 +43,8 @@
   <body>
     <div id="main-wrapper">
       <!--Header section start-->
-      <%= render partial: "layouts/web/header"%>
-      <div class="FlashNotice">
-      <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %> fade in">
-        <a href="#" data-dismiss="alert" class="close"></a>
-        <%= value %>
-      </div>
-      <% end %>
-    </div>
+      <%= render partial: "layouts/web/header"%>      
+      
       <!--Header section end-->
       <!--slider section start-->
       <%= yield %>
@@ -66,3 +59,8 @@
     <script src="https://htmldemo.net/khonike/khonike/assets/js/main.js"></script>
   </body>
 </html>
+<script>
+  setTimeout(function() {
+      $('.FlashNotice').fadeOut('slow');
+  }, 3000);
+</script>

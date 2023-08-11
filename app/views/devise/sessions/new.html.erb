@@ -20,6 +20,14 @@
           <li>or</li>
           <li><a  href="/users/sign_up">Register</a></li>
         </ul>
+         <div class="FlashNotice">
+            <% flash.each do |key, value| %>
+            <div class="<%= flash_class(key) %>">
+              <a href="#" data-dismiss="alert" class="close"></a>
+              <%= value %>
+            </div>
+            <% end %>
+          </div>
         <div class="tab-content">
           <div class="tab-pane show active">
             <!-- <form action="#"> -->
@@ -45,3 +53,8 @@
   </div>
 </div>
 
+<style type="text/css">
+  .FlashNotice{
+    color: red;
+  }
+</style>

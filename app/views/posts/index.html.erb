@@ -1,0 +1,109 @@
+<!--Page Banner Section start-->
+<div class="page-banner-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">Post List</h1>        
+      </div>
+    </div>
+  </div>
+</div>
+<!--Page Banner Section end-->
+<!--Login & Register Section start-->
+<div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+  <div class="container">
+    <div class="row row-25">
+      <%= render partial: "layouts/web/acount_menu"%>
+      <div class="col-lg-8 col-12">
+        <div class="tab-content">
+          <div class="tab-pane show active">
+            <div class="row">
+              <!--Property start-->
+              <table>
+		          	<tr>
+		          		<th>Name</th>
+		          		<th>Email</th>
+		          		<th>Phone Number</th>
+		          		<th>City</th>
+		          		<th>Price</th>
+		          		<th>Property Type</th>
+		          		<th>Transaction Type</th>
+		          		<th>Address</th>
+		          		<th></th>
+		          	</tr>
+		          	<tbody>
+		          		<% @posts.each do |post| %>
+		          		<tr>
+		          			<td><%= post.name %></td>
+		          			<td><%= post.email %></td>
+		          			<td><%= post.phone_number %></td>
+		          			<td><%= post.city %></td>
+		          			<td><%= post.price %></td>
+		          			<td><%= post.property_type %></td>
+		          			<td><%= post.transaction_type %></td>
+		          			<td><%= post.address %></td>		          			
+		          			<td>		          				
+											<div class="dropdown">
+											  <button class="">Actions</button>
+											  <div class="dropdown-content">
+											  <%= link_to "show", post %>
+											  <%= link_to "Edit", edit_post_path(post) %>
+											  <%= button_to "Destroy", post_path(post), method: :delete %>
+											  </div>
+											</div>
+		          			</td>
+		          		</tr>
+		          		<% end %>
+		          	</tbody>
+		          </table>
+              <!--Property end-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Login & Register Section end-->
+
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>

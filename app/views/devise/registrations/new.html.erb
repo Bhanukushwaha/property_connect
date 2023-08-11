@@ -11,6 +11,7 @@
     </div>
   </div>
 </div>
+
 <div class="login-register-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
   <div class="container">
     <div class="row">
@@ -24,11 +25,13 @@
           <div class="tab-pane show active">
             <!-- <form action="#"> -->
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
               <div class="row">
-                <div class="col-12 mb-30"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %></div>
+                <div class="col-12 mb-30"><%= f.email_field :email, autofocus: true,required: true, autocomplete: "email", placeholder: "Email" %></div>
                 <div class="col-12 mb-30">
-                  <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password" %></div>
-                <div class="col-12 mb-30"><%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password" %></div> 
+                  <%= f.password_field :password, autocomplete: "new-password",required: true, placeholder: "Password" %></div>
+                <div class="col-12 mb-30"><%= f.password_field :password_confirmation, required: true, autocomplete: "new-password", placeholder: "Confirm Password" %></div> 
                 <div class="col-12 mb-30">
                   <ul>
                     <li><input type="radio" name="user[role]" id="register_customer" value="customer" checked><label for="register_customer">Normal</label></li>

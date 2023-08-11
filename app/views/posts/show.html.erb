@@ -1,0 +1,47 @@
+<div class="page-banner-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">Posts Details</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Page Banner Section end-->
+<!--Agency Section start-->
+<div class="agency-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+  <div class="container">
+    <div class="row row-25">
+      <!--Agency Image-->
+      <div class="col-lg-5 col-12 mb-sm-30 mb-xs-30">
+        <div class="agency-image">
+          <img src="/assets/web/agency-1.jpg" alt="">
+        </div>
+      </div>
+      <!--Agency Content-->
+      <div class="col-lg-7 col-12">
+        <div class="agency-content">
+          <h3 class="title">Psots Estates</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, fugit. Quibusdam eveniet voluptate minima, est veritatis ea quod expedita facere harum tempore sapiente maxime recusandae quisquam cupiditate beatae nihil deserunt eum incidunt, porro rerum doloribus cum. Magnam quia voluptates quae?</p>
+          <ul>
+            <li><i class="pe-7s-users"></i><%= @post.name %></li>
+            <li><i class="pe-7s-phone"></i><a href="#"><%= @post.phone_number %></a></li>
+            <li><i class="pe-7s-mail-open"></i><a href="#"><%= @post.email %></a></li>
+            <li><i class="pe-7s-global"></i><a href="#"><%= @post.city %></a></li>
+            <li><i class="pe-7s-credit"></i><%= @post.price %></li>
+            <li><i class="pe-7s-users"></i><%= @post.property_type %></li>
+            <li><i class="pe-7s-smile"></i><%= @post.transaction_type %></li>
+            <li><i class="pe-7s-usb"></i><%= @post.address %></li>        
+          </ul>
+          <div class="social">
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Agency Section end-->
