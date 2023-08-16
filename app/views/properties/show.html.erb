@@ -3,11 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1 class="page-banner-title">Properties</h1>
-        <ul class="page-breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li class="active">Friuli-Venezia Giulia</li>
-        </ul>
+        <h1 class="page-banner-title">Properties Details</h1>
       </div>
     </div>
   </div>
@@ -269,35 +265,47 @@
           <div class="sidebar-property-list">
             <div class="sidebar-property">
               <div class="image">
-                <span class="type">For Rent</span>
+                <% if @property.status_type == "For Rent" %>                                       
+                  <span class="type">For Rent</span>
+                <% else %>
+                  <span class="type">For Sale</span>
+                <% end %> 
                 <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-1.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="#">Friuli-Venezia Giulia</a></h5>
+                <h5 class="title"><a href="#"><%= @property.name %></a></h5>
                 <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
-                <span class="price">&#8377;550 <span>Month</span></span>
+                <span class="price">&#8377;<%= @property.price %> <span>Month</span></span>
               </div>
             </div>
             <div class="sidebar-property">
               <div class="image">
-                <span class="type">For Sale</span>
+                <% if @property.status_type == "For Rent" %>                                       
+                  <span class="type">For Rent</span>
+                <% else %>
+                  <span class="type">For Sale</span>
+                <% end %>
                 <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-2.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="#">Marvel de Villa</a></h5>
+                <h5 class="title"><a href="#"><%= @property.name %></a></h5>
                 <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
-                <span class="price">&#8377;2550</span>
+                <span class="price">&#8377;<%= @property.price %></span>
               </div>
             </div>
             <div class="sidebar-property">
               <div class="image">
-                <span class="type">For Rent</span>
+                <% if @property.status_type == "For Rent" %>                                       
+                  <span class="type">For Rent</span>
+                <% else %>
+                  <span class="type">For Sale</span>
+                <% end %>
                 <a href="#"><img src="https://htmldemo.net/khonike/khonike/assets/images/property/sidebar-property-3.jpg" alt=""></a>
               </div>
               <div class="content">
-                <h5 class="title"><a href="#">Ruposi Bangla Cottage</a></h5>
-                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt="">215 L AH Rod, California</span>
-                <span class="price">&#8377;550 <span>Month</span></span>
+                <h5 class="title"><a href="#"><%= @property.name %></a></h5>
+                <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
+                <span class="price">&#8377;<%= @property.price %> <span>Month</span></span>
               </div>
             </div>
           </div>

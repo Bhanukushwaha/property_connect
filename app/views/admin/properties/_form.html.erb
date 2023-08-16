@@ -114,7 +114,7 @@
           
           <div class="form-group">
            <label for="exampleInput1" class="bmd-label-floating"> Location</label>
-           <%= form.text_field :location, required: true, class: "form-control",id: "exampleInput1" %>
+            <%= form.select :location, [["noida", "noida sector 62"], ["Berasia Road", "Berasia Road"], ["Bittan Market", "Bittan Market"], ["Noida sector 63", "Noida sector 63"], ["Hamidia Road", "Hamidia Road"], ["Hari Ganga Nagar", "Hari Ganga Nagar"], ["Bangrasia", "Bangrasia"], ["Katara", "Katara"], ["Noida sector 52", "Noida sector 52"]],{:prompt => '--  Select Location --'}, class: "form-control", id: "exampleInput1" %>
           </div>
           <div class="form-group">
            <label class="bmd-label-floating"> is_approved</label>

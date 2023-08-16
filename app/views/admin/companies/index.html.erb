@@ -23,10 +23,7 @@
   <div class="col-md-12">
     <div class="card card-plain">
       <div class="card-header card-header-primary">
-        <h4 class="card-title mt-0">Companies</h4>
-      	<div class="text-right mt-0 ">
-         <%= link_to "new", new_admin_company_path, class: "btn btn-success " %>
-      	</div>
+        <h4 class="card-title mt-0">Companies</h4>      	
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -47,6 +44,7 @@
 									</tr>
 								</tr>
 							<% end %>
+							<%= link_to "new", new_admin_company_path, class: "btn btn-success " %>
             </tbody>
           </table>
         </div>
