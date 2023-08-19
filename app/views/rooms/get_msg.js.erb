@@ -1,0 +1,1 @@
+$(".new_message_<%= @msg.id %>_<%= @msg.room_id %>").html("<%= j (render partial: "/rooms/partial_msg", locals: {msg: @msg} ) %>")

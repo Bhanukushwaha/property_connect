@@ -75,3 +75,5 @@ gem "jquery-rails"
 gem "bootstrap"
 gem 'friendly_id'
 gem 'ckeditor_rails'
+gem 'jquery-ui-rails'
+gem 'turbolinks'

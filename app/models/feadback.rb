@@ -1,0 +1,2 @@
+class Feadback < ApplicationRecord
+end

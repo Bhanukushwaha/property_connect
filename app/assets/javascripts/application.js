@@ -7,3 +7,7 @@
 //= require web/popper.min
 //= require ckeditor-jquery
 
+//= require jquery
+//= require jquery_ujs
+//= require cable
+//= require turbolinks

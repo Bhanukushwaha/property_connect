@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  # get 'rooms/index'
   devise_for :users
   resources :users
+  mount ActionCable.server => '/cable'
   # get "profiles", to: "profiles#index"
   get "/search", to: "search#index"
   get "/agent/:id", to: "home#agent"
@@ -12,6 +14,12 @@ Rails.application.routes.draw do
   resources :profiles
   resources :properties
   resources :posts
+  resources :rooms
+  resources :rooms do
+    resources :messages
+  end
+  get "/get_msg", to: "rooms#get_msg"
+
   # get "properties/:id", to: "properties#show", as: "property"
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

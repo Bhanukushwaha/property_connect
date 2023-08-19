@@ -1,4 +1,12 @@
 <div class="hero-section section position-relative">
+  <div class="FlashNotice">
+    <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>" style="margin-bottom: 0px;">
+      <a href="#" data-dismiss="alert" class="close"></a>
+      <%= value %>
+    </div>
+    <% end %>
+  </div>
   <!--Hero Item start-->
   <div class="hero-item player" data-property="{videoURL:'FlME5z9tmLM',mobileFallbackImage:'https://htmldemo.net/khonike/khonike/assets/images/bg/video-bg.jpg',coverImage:'https://htmldemo.net/khonike/khonike/assets/images/bg/video-bg.jpg',containment:'.player',startAt:0,mute:true,autoPlay:true,showControls:false,loop:true,opacity:1}">
     <div class="container">

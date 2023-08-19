@@ -1,0 +1,103 @@
+<!--Page Banner Section start-->
+<div class="page-banner-section section" style="margin-top: 0px;">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">My Posts</h1>        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <h5> Hi <%= @current_user.email %> <small><small>(<b><%= @current_user.role %></b>)</small></small> </h5>
+    <% if current_user.role == "agent" %>
+      <h4> Customers </h4>
+      <div id="rooms">
+        <%= render @rooms %>  
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-10 text-light">
+    <% if @single_room %>
+      <% if current_user.role == "agent" %>
+        <h4 class="text-center"><%= @single_room&.customer&.profile&.name %></h4>
+      <% else %>
+        <h4 class="text-center"><%= @single_room&.agent&.profile&.name %></h4>
+      <% end %>
+      <%= turbo_stream_from @single_room %>
+      <div class="message_append_<%= @single_room.id %>">
+      </div>
+      <div class="partial_msg">
+        <% @single_room.messages.each do |msg| %>
+          <h5 id="data_aa">
+            <%= render partial: "/rooms/partial_msg", locals: {msg: msg} %>
+          </h5>
+        <% end %>
+      </div>   
+      <%= render partial: 'layouts/new_message_form' %>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+    function connect() {
+      // body...
+      let socket = new WebSocket("ws://localhost:3000/cable");
+      socket.onopen = function(e) {
+        console.log("[open] Connection established");
+        socket.send(JSON.stringify({command: 'subscribe',identifier: JSON.stringify(({channel: 'MessagesChannel'}))}))
+      };
+      socket.onmessage = function(event) {
+        $(document).ready(function(){
+          if ((JSON.parse(event.data).message != null) && (JSON.parse(event.data).message.data != null)){
+            var message_id = JSON.parse(event.data).message.data.id
+            var room_id = JSON.parse(event.data).message.data.room_id
+            $(".message_append_" + room_id).append("<h6 class= 'new_message_" + message_id + "_" + room_id + "'></h6>")
+            $.ajax({
+              url: "/get_msg.js",
+              data: {msg_id: JSON.parse(event.data).message.data.id},
+            });
+            // $(".partial_msg_data").append("sddddddddddddddddddddddd");
+          }
+        })
+      };
+      socket.onclose = function(event) {
+        console.log('Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
+        setTimeout(function() {
+          connect();
+        }, 1000);
+      };
+      socket.onerror = function(error) {
+        console.log(`[error] ${error.message}`);
+      };
+    }
+    connect();
+  </script>
+
+
+  <style type="text/css">
+  .message-box {
+  width: fit-content;
+  max-width: 40%;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #555555 ;
+  padding: 10px
+}
+.msg-form {
+    position: fixed;
+    bottom: 0;
+    width: 90%
+  }
+
+  .col-md-10 {
+    height: 100vh;
+    overflow: scroll;
+  }
+
+  .msg-content {
+    width: 80%;
+    margin-right: 5px;
+  }
+</style>

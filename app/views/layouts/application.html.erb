@@ -34,9 +34,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
     <link href="https://htmldemo.net/khonike/khonike/assets/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
+    <%= action_cable_meta_tag %>
     <!-- All css files are included here. -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <!-- Modernizr JS -->
     <!-- <script src="https://htmldemo.net/khonike/khonike/assets/js/vendor/modernizr-2.8.3.min.js"></script> -->
   </head>
@@ -63,4 +65,16 @@
   setTimeout(function() {
       $('.FlashNotice').fadeOut('slow');
   }, 3000);
+
 </script>
+
+<style>
+  <%= ".msg-#{current_user&.id}" %> {
+  background-color: #007bff !important;
+  padding: 10px;
+  }
+  <%= ".cont-#{current_user&.id}" %> {
+  display: flex;
+  justify-content: flex-end
+  }
+</style>

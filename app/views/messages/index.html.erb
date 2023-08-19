@@ -1,0 +1,52 @@
+<div class="cont-<%= message.user.id %>">
+  <div class="message-box msg-<%= message.user.id %> " >
+    <%# unless message.room.is_private %>
+      <h6 class="name"> <%= message.user.username %> </h6>
+    <%# end %>
+  <%= message.content %>
+  </div>
+</div>
+
+	<script type="text/javascript">
+		function connect() {
+			// body...
+			let socket = new WebSocket("ws://localhost:3000/cable");
+	    socket.onopen = function(e) {
+	      console.log("[open] Connection established");
+	      socket.send(JSON.stringify({command: 'subscribe',identifier: JSON.stringify(({channel: 'MessagesChannel'}))}))
+	    };
+	    socket.onmessage = function(event) {
+	      $(document).ready(function(){
+	      	// console.log("*************", event.data.message.data.id)
+	        // if ((JSON.parse(event.data).message != null) && (JSON.parse(event.data).message.data != null) && (JSON.parse(event.data).message.data.action == "reload_partial")) {
+	        //   $.ajax({
+	        //     url: "/get_record"
+	        //   });
+	        // }
+
+
+	        // $.ajax({
+	        //   url: "/get_record"
+	        // });
+	        // $("#article_" + event.data.message.data.id.to_s).append("<p><strong>Title:</strong>dcdcdcf</p>")
+	        // console.log("*************", event.data.message)
+	        // if (JSON.parse(event.data).type != "ping"){
+	        	if ((JSON.parse(event.data).message != null) && (JSON.parse(event.data).message.data != null)){
+		        	// alert(JSON.parse(event.data).message.data.id)
+		        	$(".article_append").append("<p><strong>Title:</strong><%= JSON.parse(event.data).message.data.id rescue nil %></p>")
+	        	}
+	        // }
+	      })
+	    };
+	    socket.onclose = function(event) {
+	      console.log('Socket is closed. Reconnect will be attempted in 1 second.', event.reason);
+	      setTimeout(function() {
+	        connect();
+	      }, 1000);
+	    };
+	    socket.onerror = function(error) {
+	      console.log(`[error] ${error.message}`);
+	    };
+		}
+		connect();
+	</script>

@@ -23,6 +23,11 @@
                   <h1 class="title"><%= @property.name %></h1>
                   <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
                 </div>
+                <div class="property-search col-lg-4 ">
+                  <% if current_user.role == "customer" %>
+                  <a class="btn" href="/rooms?id=<%= @property.slug %>">chat with agents</a>
+                  <% end %>
+                </div>
                 <div class="right">
                   <div class="type-wrap">
                     <% if @property.status_type == "For Rent" %>
@@ -88,12 +93,12 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12 mb-30">
+                  <!-- <div class="col-12 mb-30">
                     <h3>Video</h3>
                     <div class="embed-responsive ratio ratio-16x9">
                       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8CbvItGX7Vk"></iframe>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- <div class="col-12">
                     <h3>Location</h3>
                     <div class="embed-responsive ratio ratio-16x9">
@@ -107,8 +112,8 @@
           <!--Property end-->
           <!--Comment start-->
           <div class="comment-wrap col-12">
-            <h3>3 Feedback</h3>
-            <ul class="comment-list">
+            <!-- <h3>3 Feedback</h3> -->
+            <!-- <ul class="comment-list">
               <li>
                 <div class="comment">
                   <div class="image"><img src="https://htmldemo.net/khonike/khonike/assets/images/review/review-1.jpg" alt=""></div>
@@ -156,11 +161,13 @@
                   </div>
                 </div>
               </li>
-            </ul>
+            </ul> -->
             <h3>Leave a Feedback</h3>
             <div class="comment-form">
               <form action="#">
                 <div class="row">
+                  <div class="col-md-6 col-12 mb-30"><input type="text" placeholder="Name"></div>
+                  <div class="col-md-6 col-12 mb-30"><input type="email" placeholder="Email"></div>
                   <div class="col-md-6 col-12 mb-30"><input type="text" placeholder="Name"></div>
                   <div class="col-md-6 col-12 mb-30"><input type="email" placeholder="Email"></div>
                   <div class="col-12 mb-30"><textarea placeholder="Message"></textarea></div>
