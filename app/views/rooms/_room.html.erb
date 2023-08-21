@@ -1,1 +1,22 @@
-<div> <%= link_to room&.customer&.profile&.name, room %> </div>
+<!-- <div> <%#= link_to room&.customer&.profile&.name, room %> </div> -->
+
+<%= link_to room_path(room.id) do %>
+	<div id="friends" class="friends">
+	<!-- photo -->
+		<div class="profile friends-photo">
+			<% if room&.customer&.profile.present? && room&.customer&.profile&.image.attached?%>
+				<img src="<%= room&.customer&.profile&.profile_image %>" alt="<%= room&.customer&.profile&.name %>">
+			<% else %>
+		  	<img src="<%= asset_path('web/agent-2.jpg')%>" alt="">
+		  <% end %>
+		</div>
+		<div class="friends-credent">
+		  <!-- name -->
+		  <span class="friends-name"><%= room&.customer&.profile&.name %></span>
+		  <!-- last message -->
+		  <!-- <span class="friends-message"><%#= room.messages.where(user_id: room&.customer&.id).last&.content %></span> -->
+		</div>
+		<!-- notification badge -->
+		<!-- <span class="badge notif-badge">7</span> -->
+	</div>
+<% end %>
