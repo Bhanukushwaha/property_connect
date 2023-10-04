@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_17_092505) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_152901) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_092505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "feadbacks", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -76,6 +83,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_17_092505) do
     t.bigint "user_id"
     t.bigint "room_id"
     t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "property_id"
+    t.string "name"
+    t.string "email"
+    t.decimal "price"
+    t.bigint "phone_number"
+    t.string "addresses"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

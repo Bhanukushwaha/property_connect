@@ -1,0 +1,52 @@
+<div class="page-banner-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">Order Details</h1>            
+      </div>
+    </div>
+  </div>
+</div>
+<!--Page Banner Section end-->
+<!--Agent Section start-->
+<div class="agent-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+  <div class="container">
+    <div class="row row-25">
+       <!--Agent Image-->
+      <div class="col-lg-5 col-12 mb-30">
+        <div class="agent-image">
+          <img src="/assets/web/agent-1.jpg" alt="">
+        </div>
+      </div>
+       <!--Agent Content-->
+      <div class="col-lg-7 col-12">
+        <div class="agent-content">
+          <h3 class="title">Donald Palmer</h3>
+          <div class="row">
+            <div class="col-md-6 col-12 mb-30">
+              <h4>Persoanl Info</h4>
+              <ul>
+                <li><span>Name:</span> <span><%= order.name %></span></li>
+                <li><span>Email:</span> <span><%= order.email %></span></li>
+                <li><span>Price:</span> <span><%= order.price %></span></li>
+                <li><span>Number:</span> <span><%= order.phone_number %></span></li>
+                <li><span>Address:</span> <span><%= order.addresses %></span></li>
+              </ul>                    
+            </div>
+            <div class="col-md-6 col-12 mb-30">
+              <h4>Agency Info</h4>
+              <ul>
+                <li><span>Agency:</span> <span><a href="#">Royao Estates</a> <a href="#">Duplex Estates</a></span></li>
+                <li><span>Company:</span> <span>GTA5</span></li>
+                <li><span>Licenses:</span> <span>AB7876A6</span></li>
+                <li><span>Number:</span> <span><a href="#">(756) 447 5744</a></span></li>
+                <li><span>Address:</span> <span><%= order.addresses %></span></li>
+              </ul>
+            </div>
+          </div>
+          <p>Donald Palmer is a Specialist Real Estate Agent with 8 years of   Experience in Real Estate field. He achive success with his honesty,determination, hardwork and commetment. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, totam?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

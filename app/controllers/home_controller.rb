@@ -8,8 +8,10 @@ class HomeController < ApplicationController
     #     end
     #   end
     # end
-    @users = User.agents.last(4)	
-		@properties = Property.where(is_approved: true).last(6)
+    @users = User.agents.last(4)
+    ids = Order.all.map(&:property_id)
+    @properties = Property.where(is_approved: true).where.not(id: ids).last(6)
+	# @properties = Property.where(is_approved: true).last(6)
 		# if params[:status_type].present?
 		# 	@properties = Property.where(status_type: params[:status_type])
 		# end
@@ -19,5 +21,5 @@ class HomeController < ApplicationController
 	end
 	def agent
 		@user = User.find(params[:id])
-	end
+	end	
 end

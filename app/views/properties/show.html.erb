@@ -24,18 +24,18 @@
                   <span class="location"><img src="https://htmldemo.net/khonike/khonike/assets/images/icons/marker.png" alt=""><%= @property.location %></span>
                 </div>
                 <div class="property-search col-lg-4 ">
-                  <% if current_user.role == "customer" %>
+                  <% if current_user&.role == "customer" %>
                   <a class="btn" href="/rooms?id=<%= @property.slug %>">chat with agents</a>
                   <% end %>
                 </div>
                 <div class="right">
                   <div class="type-wrap">
                     <% if @property.status_type == "For Rent" %>
-                      <span class="price">&#8377;<%= @property.price %><span>Month</span></span>                    
-                       <span class="type">For Rent</span>
+                      <span class="price">&#8377;<%= @property.price %><span>Month</span></span> 
+                      <span class="type">For Rent</span>
                      <% else %>
                       <span class="type">For Sale</span>
-                    <% end %>                 
+                    <% end %>
                   </div>
                 </div>
               </div>
@@ -184,84 +184,32 @@
         <div class="sidebar">
            <!-- <h4 class="sidebar-title"><span class="text">Search Property</span><span class="shape"></span></h4>  -->
           <!-- <!Property Search start -->
-          <!-- <div class="property-search sidebar-property-search">
-            <form action="#">
-              <div>
-                <input type="text" placeholder="Location">
-              </div>
-              <div>
-                <select class="nice-select">
-                  <option>All Cities</option>
-                  <option>Athina</option>
-                  <option>Austin</option>
-                  <option>Baytown</option>
-                  <option>Brampton</option>
-                  <option>Cedar Hill</option>
-                  <option>Chester</option>
-                  <option>Chicago</option>
-                  <option>Coleman</option>
-                  <option>Corpus Christi</option>
-                  <option>Dallas</option>
-                  <option>distrito federal</option>
-                  <option>Fayetteville</option>
-                  <option>Galveston</option>
-                  <option>Jersey City</option>
-                  <option>Los Angeles</option>
-                  <option>Midland</option>
-                  <option>New York</option>
-                  <option>Odessa</option>
-                  <option>Reno</option>
-                  <option>San Angelo</option>
-                  <option>San Antonio</option>
-                </select>
-              </div>
-              <div>
-                <select class="nice-select">
-                  <option>For Rent</option>
-                  <option>For Sale</option>
-                </select>
-              </div>
-              <div>
-                <select class="nice-select">
-                  <option>Type</option>
-                  <option>Apartment</option>
-                  <option>Cafe</option>
-                  <option>House</option>
-                  <option>Restaurant</option>
-                  <option>Store</option>
-                  <option>Villa</option>
-                </select>
-              </div>
-              <div>
-                <select class="nice-select">
-                  <option>Bedrooms</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                </select>
-              </div>
-              <div>
-                <select class="nice-select">
-                  <option>Bathrooms</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                </select>
-              </div>
-              <div>
-                <div id="search-price-range"></div>
-              </div>
-              <div>
-                <button>search</button>
-              </div>
-            </form>
-          </div> -->
+          <div class="property-search sidebar-property-search">
+            <div id="favourite_section">
+              <%= render partial: "properties/favourite_form", locals: {property: @property} %>
+            </div>
+            </br>
+            <%= form_with(model: [@property, @order], local: true) do |form| %>
+              <article>
+                <% if flash[:error].present? %>
+                  <div id="error_explanation">
+                    <p><%= flash[:error] %></p>
+                  </div>
+                <% end %>
+                <!-- <label class="amount">
+                <span>Amount: $<%#= current_cart.sub_total %></span>
+                </label>  -->
+              </article>
+              <input type="submit", class="btn" value="Buy Now"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="A month's subscription"
+              data-amount="<%= @property&.price.to_f * 100 %>"
+              data-locale="auto">
+               <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+               <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+            <% end %>
+          </div>      
           <!--Property Search end-->
         </div>
         <!--Sidebar end-->
@@ -287,7 +235,7 @@
             </div>
             <div class="sidebar-property">
               <div class="image">
-                <% if @property.status_type == "For Rent" %>                                       
+                <% if @property.status_type == "For Rent" %>                                      
                   <span class="type">For Rent</span>
                 <% else %>
                   <span class="type">For Sale</span>
@@ -302,7 +250,7 @@
             </div>
             <div class="sidebar-property">
               <div class="image">
-                <% if @property.status_type == "For Rent" %>                                       
+                <% if @property.status_type == "For Rent" %>                                      
                   <span class="type">For Rent</span>
                 <% else %>
                   <span class="type">For Sale</span>
@@ -395,4 +343,18 @@
     </div>
   </div>
 </div>
-      
+<script>
+  $(document).ready(function() {
+    $(':submit').on('click', function(event) {
+      event.preventDefault();
+      var $button = $(this),
+          $form = $button.parents('form');
+      var opts = $.extend({}, $button.data(), {
+        token: function(result) {
+        $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+        }
+      });
+      StripeCheckout.open(opts);
+    });
+  });
+</script>

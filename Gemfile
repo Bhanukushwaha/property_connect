@@ -77,3 +77,6 @@ gem 'friendly_id'
 gem 'ckeditor_rails'
 gem 'jquery-ui-rails'
 gem 'turbolinks'
+gem "letter_opener", group: :development
+gem 'stripe'
+gem "figaro"

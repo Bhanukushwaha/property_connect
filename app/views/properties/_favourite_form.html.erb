@@ -1,0 +1,5 @@
+<% if !Favourite.where(property_id: @property&.id, :user_id=>current_user&.id).present?  %>
+  <a href="/favourite?property_id=<%= @property.id%>" class="btn" data-remote="true" >Favourite</a>
+<% else %>
+  <a href="/unfavourite?property_id=<%= @property.id %>" class="btn" data-remote="true" >Unfavourite</a>
+<% end %> 

@@ -12,19 +12,34 @@
   <section id="main-left" class="main-left">
     <!-- header -->
     <div id="header-left" class="header-left">
-      <h5 style="margin-left: 20px;"> <%= @current_user.email %> <small><small>(<b><%= @current_user.role %></b>)</small></small> </h5>
-      <!-- <span class="glyphicon glyphicon-menu-hamburger hamburger-btn"></span>
-      <span class="glyphicon glyphicon-search search-btn"></span>
-      <span class="glyphicon glyphicon-option-vertical option-btn"></span> -->
+      <h5 style="margin-left: 20px;"> <%= @current_user.email %> <small><small>(<b><%= @current_user.role %></b>)</small></small></h5>      
     </div>
     <!-- chat list -->
     <div id="chat-list" class="chat-list">
-      <!-- user lists -->
-      <%= render @rooms %>
+      <% @rooms.each do |room| %>
+        <%= link_to room_path(room.id) do %>
+          <div id="friends" class="friends <%= (@single_room&.user_id == room.customer.id) ? 'active_user' : "" %>">
+            <div class="profile friends-photo">
+              <% if room&.customer&.profile.present? && room&.customer&.profile&.image.attached?%>
+                <img src="<%= room&.customer&.profile&.profile_image %>" alt="<%= room&.customer&.profile&.name %>">
+              <% else %>
+                <img src="<%= asset_path('web/agent-2.jpg')%>" alt="">
+              <% end %>
+            </div>
+            <div class="friends-credent">
+              <span class="friends-name"><%= room&.customer&.profile&.name %></span>
+              <!-- last message -->
+              <!-- <span class="friends-message"><%#= room.messages.where(user_id: room&.customer&.id).last&.content %></span> -->
+            </div>
+            <!-- notification badge -->
+            <!-- <span class="badge notif-badge">7</span> -->
+          </div>
+        <% end %>
+      <% end %> 
+      <%#= render @rooms, locals: {single_room: } %>
     </div>
   </section>
   <!-- RIGHT SECTION -->
-
   <section id="main-right" class="main-right">
     <!-- header -->
     <div id="header-right" class="header-right">
@@ -37,9 +52,11 @@
       <h4 class="name friend-name">
         <% if @single_room %>
           <% if current_user.role == "agent" %>
-            <%= @single_room&.customer&.profile&.name %>
+            <%= @single_room&.customer&.profile&.name %> - Cont.
+            <b><%= @single_room&.customer&.profile&.mobile_number %></b>
           <% else %>
-            <%= @single_room&.agent&.profile&.name %>
+            <%= @single_room&.agent&.profile&.name %> - Cont.
+            <b><%= @single_room&.agent&.profile&.mobile_number %></b>
           <% end %> 
         <% end %>
       </h4>
@@ -53,32 +70,34 @@
 
     <!-- chat area -->
     <% if @single_room %>
-      <!-- <div id="message_append_<%#= @single_room.id %>"> -->
-        <div id="chat-area" class="chat-area">
+      <div id="chat-area" class="chat-area">
           <!-- chat content -->
           <% @single_room.messages.each do |msg| %>
             <% if (msg.user_id == current_user.id) %>
               <!-- YOUR CHAT TEMPLATE -->
               <div id="your-chat" class="your-chat">
                 <p class="your-chat-balloon"><%= msg&.content %></p>
-                <p class="chat-datetime"><span class="glyphicon glyphicon-ok"></span> Sun, Aug 30 | 15:45</p>
+                <p class="chat-datetime"><span class="glyphicon glyphicon-ok"></span><%= msg.created_at.strftime("%I:%M %p") %></p>
               </div>
             <% else %>
               <!-- FRIENDS CHAT TEMPLATE -->
               <div id="friends-chat" class="friends-chat">
                 <div class="profile friends-chat-photo">
-                  <!-- <img src="images/ava2.jpg" alt=""> -->
+                  <% if msg&.user&.profile&.image.attached?%>
+                    <%= image_tag msg&.user&.profile&.image %>
+                  <% else %>
+                    <img src="<%= asset_path('web/agent-2.jpg')%>" alt="">
+                  <% end %>
                 </div>
                 <div class="friends-chat-content">
                   <p class="friends-chat-balloon"><%= msg&.content %></p>
-                  <h5 class="chat-datetime">Sun, Aug 30 | 15:41</h5>
+                  <h5 class="chat-datetime"><%= msg.created_at.strftime("%I:%M %p") %></h5>
                 </div>
               </div>
             <% end %>
           <% end %>
           <div class="message_append_<%= @single_room.id %>"></div>
-        </div>
-      <!-- </div> -->
+      </div>
 
       <!-- typing area -->
     
@@ -119,6 +138,12 @@
           const newNameInput = document.getElementById("chat-text_" + room_id + "_"+ user_id);
           const name = newNameInput.value;
           newNameInput.value = "";
+          const scrollableDiv = document.getElementById("chat-area");
+          if (scrollableDiv) {
+            // debugger
+            scrollableDiv.scrollTop = scrollableDiv.scrollHeight + 200;
+          }
+
         }
       })
     };
@@ -133,18 +158,21 @@
     };
   }
   connect();
-  // $(document).ready(function(){
-  //   var room = <%= @single_room.id %>;
-  //   const messages = document.getElementById("message_append_" + room);
-  //   if (messages) {
-  //     messages.addEventListener("DOMNodeInserted", resetScroll)
-  //     resetScroll(messages);
+  $(document).ready(function(){
+    const scrollableDiv = document.getElementById("chat-area");
+    // function scrollToBottom() {
+      if (scrollableDiv) {
+        scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+      }
+    // }
 
-  //     function resetScroll() {
-  //       messages.scrollTop = messages.scrollHeight - messages.clientHeight;
-  //     }
-  //   }    
-  // });
+    // const scrollableDiv = document.getElementById("chat-area");
+  
+    // // Scroll the page to the bottom of the div
+    // if (scrollableDiv) {
+    //   scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+    // }
+  });
 </script>
 <style type="text/css">
   html, body {
@@ -181,7 +209,7 @@
 }
 
 .main-left {
-    background: #313866;
+    background: #506D84;
     display: grid;
     grid-template-rows: 1fr 6fr 1fr;
     grid-auto-flow: row;
@@ -237,6 +265,9 @@
 
 .friends:hover {
     background: #041a31;
+}
+.active_user {
+    background: #041a31 !important;
 }
 
 .friends-photo {

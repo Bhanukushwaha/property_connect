@@ -1,0 +1,50 @@
+<div class="page-banner-section section">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1 class="page-banner-title">Order Details</h1>            
+      </div>
+    </div>
+  </div>
+</div>
+<!--Page Banner Section end-->
+<!--Agent Section start-->
+<div class="agent-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+  <div class="container">
+    <div class="row row-25">      
+       <!--Agent Content-->
+      <div class="col-lg-9 col-12">
+        <div class="agent-content">
+          <h3 class="title">Donald Palmer</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Price</th>
+                <th>Phone number</th>
+                <th>Addresses</th>
+                <th colspan="3">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @orders.each do |order| %>
+                <tr>
+                  <td><%= order.name %></td>
+                  <td><%= order.email %></td>
+                  <td><%= order.price %></td>
+                  <td><%= order.phone_number %></td>
+                  <td><%= order.addresses %></td>
+                  <td><%= link_to "Show ", order %></td>
+                  <td><%= link_to "Edit this ", edit_order_path(order) %></td>
+                  <td><%= button_to "Destroy", order, method: :delete %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= link_to "New order", new_order_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

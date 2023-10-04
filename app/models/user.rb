@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_one :profile, dependent: :destroy
+  has_many :favourites, dependent: :destroy
   has_many :properties, dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :orders, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :rooms, class_name: "Room", foreign_key: "agent_id"
   belongs_to :company, optional: true

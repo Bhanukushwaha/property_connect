@@ -10,6 +10,19 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1 or /properties/1.json
   def show
+    @order = Order.new
+  end
+
+  def favourite
+    @property = Property.find(params[:property_id])
+    @favourite = Favourite.create(user_id: current_user.id, property_id: params[:property_id])
+    
+  end
+
+  def unfavourite
+    @property = Property.find(params[:property_id])
+    @favourite = Favourite.where(user_id: current_user.id, property_id: @property.id).first
+    @favourite.destroy
   end
 
   # GET /properties/new
@@ -25,7 +38,7 @@ class PropertiesController < ApplicationController
   def edit
   end
 
-  # POST /properties or /properties.json
+  # post /properties or /properties.json
   def create
     @property = Property.new(property_params)
     @property.user_id = current_user.id

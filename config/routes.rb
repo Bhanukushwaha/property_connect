@@ -9,12 +9,20 @@ Rails.application.routes.draw do
   get "/new_password", to: "profiles#change_password"
   get "/my_properties", to: "profiles#my_properties"
   get "/my_account", to: "profiles#my_account"
+  get '/favourite' =>'properties#favourite', as: :favourite
+  get '/unfavourite' =>'properties#unfavourite', as: :unfavourite
+  get "/my_favourite", to: "favourite#my_favourite"
   post "/reset_password", to: "profiles#reset_password"
   # get "/properties/new", to: "properties#new"
   resources :profiles
   resources :properties
   resources :posts
   resources :rooms
+  resources :orders
+  # post "properties/:id/orders", to: "orders#create"
+  resources :properties do 
+    resources :orders
+  end
   resources :rooms do
     resources :messages
   end

@@ -17,24 +17,24 @@
               <li class="has-dropdown">
                 <a href="#">Pages</a>
                 <ul class="sub-menu">
-                  <li><a href="/my_account">My account</a></li>                  
+                  <li><a href="/my_account">My account</a></li>
+                  <li><a href="/my_favourite">My favourites</a></li>
+                  <li><a href="/orders"> My Orders</a></li>           
                   <li><a href="/users/sign_out">Log Out</a></li>
                 </ul>
               </li>
-              <!-- <li class="has-dropdown">
-                <a href="properties.html">Properties</a>
-                <ul class="sub-menu">
-                  <li class="has-dropdown">
-                    <a href="properties.html">Properties Grid</a>
-                    <ul class="sub-menu">
-                      <li><a href="properties.html">Default Layout</a></li>
-                      <li><a href="properties-left-sidebar.html">Left Sidebar</a></li>
-                      <li><a href="properties-right-sidebar.html">Right Sidebar</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li> -->
-
+              <li >
+                <% if current_user&.role == "agent" %>
+                <a  href="/rooms">Notifications</a>
+                <% end %>
+              </li>
+              <li >
+                <% if user_signed_in? %>
+                  <a href="/users/sign_out" >LogOut</a>
+                <% else %>
+                  <a href="/users/sign_in" >Login_or_Register</a>
+                <% end %>
+              </li>
             </ul>
           </nav>
         </div>
@@ -42,15 +42,6 @@
         <!--Menu end-->
         <!--User start-->
         
-        <div class="col mr-sm-50 mr-xs-50">
-          <div class="header-user">
-            <% if user_signed_in? %>
-              <a href="/users/sign_out" class="user-toggle"><i class="pe-7s-user"></i><span>Log Out</span></a>
-            <% else %>
-              <a href="/users/sign_in" class="user-toggle"><i class="pe-7s-user"></i><span>Login or Register</span></a>
-            <% end %>
-          </div>          
-        </div>
       </div>
       <!--Mobile Menu start-->
       <div class="row">
