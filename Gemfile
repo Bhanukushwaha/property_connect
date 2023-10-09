@@ -80,3 +80,4 @@ gem 'turbolinks'
 gem "letter_opener", group: :development
 gem 'stripe'
 gem "figaro"
+gem "geocoder" 

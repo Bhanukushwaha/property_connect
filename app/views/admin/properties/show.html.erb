@@ -72,3 +72,33 @@
 </div>
 
 <%= link_to "back", admin_properties_path %>
+
+<div id="map"></div>
+
+
+<style>
+   #map {
+    height: 400px;
+    width: 100%;
+   }
+</style>
+  <script>
+    function initMap() {
+     var lat1 = <%= @property.latitude %>;
+     var long1 = <%= @property.longitude %>;
+      var uluru = {lat: lat1, lng: long1};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 15,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+  </script>
+  
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvuPSxdugPS2FJQibo-i78wVZHWgmKemk&callback=initMap">
+  </script>
+

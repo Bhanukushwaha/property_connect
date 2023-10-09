@@ -64,15 +64,11 @@
             </div>
             <div>
               <h4>Location</h4>
-              <select class="nice-select" name="location">
+              <select class="nice-select" name="location" id="location">
                 <option value="">--Select--</option>
-                <option value="Bairagarh">Bairagarh</option>
-                <option value="Berasia Road" >Berasia Road</option>
-                <option value="Bittan Market" >Bittan Market</option>
-                <option value="Noida sector 63" >Noida sector 63</option>
-                <option value="Hamidia Road" >Hamidia Road</option>
-                <option value="Hari Ganga Nagar" >Hari Ganga Nagar</option>
-                <option value="Noida sector 52" >Noida sector 52</option>                
+                <option value="1">1 km</option>
+                <option value="3" >3 km</option>
+                <option value="5" >5 km</option>
               </select>
             </div>
             <div>
@@ -554,3 +550,35 @@
     </div>
   </div>
 </div>
+
+<script type="">    
+  var currentLatitude; // Declare variables to store latitude and longitude
+  var currentLongitude;
+
+  if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      currentLatitude = position.coords.latitude; // Store latitude and longitude
+      currentLongitude = position.coords.longitude;
+
+      // Update the HTML to display the current location
+      document.getElementById('latitude').textContent = currentLatitude;
+      document.getElementById('longitude').textContent = currentLongitude;
+    }, function (error) {
+      console.error("Error getting location:", error.message);
+    });
+  } else {
+    alert("Geolocation is not supported by your browser.");
+  }
+
+  document.getElementById('location').addEventListener('change', function () {
+  var selectedValue = this.value; // Get the selected value from the dropdown
+  if (selectedValue) {
+    // Combine the selected value with current latitude and longitude
+    var locationQuery = "latitude=" + currentLatitude + "&longitude=" + currentLongitude + "&location=" + selectedValue;
+
+    // Redirect to the search page with the combined location query
+    window.location.href = "/search?" + locationQuery;
+  }
+});
+
+</script>
