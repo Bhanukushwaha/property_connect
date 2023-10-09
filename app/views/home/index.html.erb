@@ -495,11 +495,10 @@
               <div class="image">
                 <a class="img" href="/agent/<%= user.id%>">
                   <% if user.profile&.image&.attached? %>
-                      <%= image_tag user.profile.image, style: "width: 270px; height: 270px; " %>
+                    <%= image_tag user.profile.image, style: "width: 270px; height: 270px; " %>
                   <% else %>
                     <img src="/assets/web/agent-1.jpg" alt="">
                   <% end %>
-                  <!-- <img src="https://htmldemo.net/khonike/khonike/assets/images/agent/agent-1.jpg" alt=""> -->
                 </a>
                 <div class="social">
                   <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
