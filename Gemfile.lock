@@ -110,6 +110,7 @@ GEM
       thor (>= 0.14.0, < 2)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -269,6 +270,7 @@ DEPENDENCIES
   devise
   figaro
   friendly_id
+  geocoder
   importmap-rails
   jbuilder
   jquery-rails

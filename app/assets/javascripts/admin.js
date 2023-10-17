@@ -14,7 +14,6 @@ function initMap() {alert("ok");}
 
 $(document).ready(function () {
   var input = document.getElementById('address-input');
-  debugger
   var options = {
     types: ['geocode'],
   };
