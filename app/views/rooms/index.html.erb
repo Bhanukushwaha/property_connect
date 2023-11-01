@@ -98,9 +98,7 @@
           <% end %>
           <div class="message_append_<%= @single_room.id %>"></div>
       </div>
-
-      <!-- typing area -->
-    
+      <!-- typing area -->    
       <div id="typing-area" class="typing-area" style="height: 51px; grid-template-columns: none;margin-top: 30px;">
         <%= form_for([@single_room, @message], :remote => true, class: "") do |f| %>
           <div class="row">
@@ -143,7 +141,6 @@
             // debugger
             scrollableDiv.scrollTop = scrollableDiv.scrollHeight + 200;
           }
-
         }
       })
     };

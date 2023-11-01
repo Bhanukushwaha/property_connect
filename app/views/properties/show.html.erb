@@ -39,7 +39,7 @@
                   </div>
                 </div>
               </div>
-              <div class="image"id="img-container" >
+              <div class=""id="img-container" >
                 <div id="lens"></div>
                 <% if @property.images.attached? %>                
                   <%= image_tag @property.images.last ,id: "featured" %>
@@ -352,26 +352,26 @@
   </div>
 </div>
 <style type="text/css">
-
-
 #img-container{
   z-index: 1;
-  max-width: 600px;
+  max-width: 400px;
   position: relative;
 }
+#featured{
+height: 320px;
+}
+
 
 #lens{
-  z-index: 2;
+ z-index: 2;
   position: absolute;
-
-  height: 125px;
-  width: 125px;
-/*  border:2px solid black;*/
-  background-repeat: no-repeat;
+  height: 325px;
+  width: 395px;
+  border:2px solid black;
+  background: rgba(0, 0, 0, .4);
   cursor: none;
-
-}
-#lens:hover {
+  margin-left: 101%;
+/*  overflow: hidden;*/
 }
 </style>
 <script type="text/javascript">
@@ -382,8 +382,8 @@ function imageZoom(imgID){
   let img = document.getElementById(imgID)
   let lens = document.getElementById('lens')
   lens.style.backgroundImage = `url( ${img.src} )`
-  let ratio = 3
-  lens.style.backgroundSize = (img.width * ratio) + 'px ' + (img.height * ratio) + 'px';
+  let ratio = 6
+  lens.style.backgroundSize = (img.width * ratio) +  'px ' + (img.height * ratio) + 'px';
   img.addEventListener("mousemove", moveLens)
   lens.addEventListener("mousemove", moveLens)
   img.addEventListener("touchmove", moveLens)
@@ -393,8 +393,8 @@ function imageZoom(imgID){
     //console.log('pos:', pos)
 
     //2
-    let positionLeft = pos.x - (lens.offsetWidth / 2)
-    let positionTop = pos.y - (lens.offsetHeight / 2)
+    let positionLeft = pos.x - (lens.offsetWidth )
+    let positionTop = pos.y - (lens.offsetHeight )
 
     //5
     if(positionLeft < 0 ){
@@ -438,7 +438,7 @@ imageZoom('featured')
     $(':submit').on('click', function(event) {
       event.preventDefault();
       var $button = $(this),
-          $form = $button.parents('form');
+        $form = $button.parents('form');
       var opts = $.extend({}, $button.data(), {
         token: function(result) {
         $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();

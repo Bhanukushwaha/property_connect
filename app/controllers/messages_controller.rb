@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+   
   skip_before_action :verify_authenticity_token
 	def create
     @current_user = current_user
